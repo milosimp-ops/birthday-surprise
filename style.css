@@ -1,0 +1,306 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        #ff8fc7,
+        #c3a1ff,
+        #89d8ff,
+        #ffc5a1
+    );
+    background-size: 300% 300%;
+    animation: backgroundMove 12s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+@keyframes backgroundMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.24);
+    filter: blur(100px);
+    border-radius: 50%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.birthday-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 650px);
+    padding: 42px 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.19);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 32px;
+    box-shadow: 0 25px 80px rgba(83, 41, 112, 0.18);
+    backdrop-filter: blur(16px);
+    animation: cardAppear 1.1s ease both;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.sparkle {
+    font-size: 25px;
+    color: #fff6ad;
+    animation: sparkle 1.8s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.55; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(48px, 10vw, 82px);
+    line-height: 0.98;
+    letter-spacing: 1px;
+    margin: 16px 0;
+    text-shadow: 0 5px 0 rgba(125, 58, 132, 0.15);
+}
+
+h1 span {
+    color: #fff6a8;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+}
+
+.subtitle {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.cake {
+    display: inline-block;
+    font-size: 95px;
+    margin: 12px 0;
+    filter: drop-shadow(0 12px 12px rgba(93, 47, 91, 0.2));
+    animation: cakeBounce 2s ease-in-out infinite;
+}
+
+@keyframes cakeBounce {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.wish-preview {
+    max-width: 390px;
+    margin: 0 auto 26px;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    padding: 16px 24px;
+    max-width: 100%;
+    background: #fff8ce;
+    color: #9a4388;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(85, 39, 100, 0.18);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(85, 39, 100, 0.25);
+}
+
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+#birthdayMessage {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.2);
+    line-height: 1.9;
+    animation: messageAppear 0.6s ease both;
+}
+
+#birthdayMessage h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+}
+
+#birthdayMessage p {
+    font-size: 13px;
+}
+
+#birthdayMessage .love {
+    font-weight: 700;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes messageAppear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 9px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+#balloons,
+#confetti {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#balloons {
+    z-index: 0;
+}
+
+#confetti {
+    z-index: 2;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 42px;
+    height: 54px;
+    border-radius: 50% 50% 45% 45%;
+    opacity: 0.8;
+    box-shadow: inset -7px -5px 0 rgba(0, 0, 0, 0.08);
+    animation: floatUp linear infinite;
+}
+
+.balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 17px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid currentColor;
+    filter: brightness(0.9);
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 52px;
+    left: 20px;
+    height: 65px;
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-55vh) rotate(8deg); }
+    to { transform: translateY(-125vh) rotate(-8deg); }
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(115vh) rotate(900deg);
+        opacity: 0.15;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-card {
+        padding: 34px 20px;
+        border-radius: 25px;
+    }
+
+    .small-heading {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .cake {
+        font-size: 80px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 14px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+#backButton {
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #9a4388;
+    border: 2px solid white;
+}
+
+#backButton:hover {
+    background: #ffe0f0;
+}
